@@ -31,5 +31,5 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-              pipenv run pytest api_approch_1/test/
+              pipenv run pytest test/
 
