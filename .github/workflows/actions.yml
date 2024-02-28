@@ -15,17 +15,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.10
+      - name: Set up Python 3.12.1
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3.10-full python3-pip
+          sudo apt-get install -y python3.12.1-full python3-pip
           echo "export PATH=/home/seluser/.local/bin:$PATH" >> $GITHUB_ENV
 
       - name: Install pipenv and dependencies
         run: |
-          python3.10 -m pip install --upgrade pip
-          python3.10 -m pip install --user pipenv
-          pipenv install --python `which python3.10`
+          python3.12.1 -m pip install --upgrade pip
+          python3.12.1 -m pip install --user pipenv
+          pipenv install --python 'which python3.12.1'
 
       - name: Update pytest and dependencies
         run: |
