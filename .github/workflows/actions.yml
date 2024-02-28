@@ -1,28 +1,30 @@
 name: Python Automation API Test
-
 on:
   push:
     branches: [main]
   schedule:
     - cron: '0 0 * * *'
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.11'
-
+      - name: Set up Python 3.10
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3.10-full python3-pip
+          echo "export PATH=/home/seluser/.local/bin:$PATH" >> $GITHUB_ENV
       - name: Install pipenv and dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install --user pipenv
-          pipenv install
-
+          python3.10 -m pip install --upgrade pip
+          python3.10 -m pip install --user pipenv
+          pipenv install --python `which python3.10`
+      - name: Update pytest and dependencies
+        run: |
+          pipenv update pytest
+      - name: Install exceptiongroup
+        run: |
+          pipenv install exceptiongroup
       - name: Run tests with pytest
         run: |
-          pipenv run pytest test/
+              pipenv run pytest test/
