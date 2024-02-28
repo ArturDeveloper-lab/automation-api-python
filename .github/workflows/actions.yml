@@ -19,16 +19,14 @@ jobs:
         with:
           python-version: '3.12.1'
 
-      - name: Run pipenv --where using full path
-        run: /path/to/pipenv --where
-
       - name: Install pipenv
         run: python -m pip install --upgrade pip pipenv
 
       - name: Verify pipenv installation
         run: pipenv --version
 
-
+      - name: Install dependencies with Pipenv (Verbose)
+        run: pipenv install --dev --verbose
 
       - name: Check Python version
         run: python --version
@@ -36,21 +34,8 @@ jobs:
       - name: Which Python
         run: which python
 
-      - name: Python Version
-        run: python --version
-
       - name: Pipenv --py
         run: pipenv --py
-
-
-
-
-
-      - name: Check Pipenv version
-        run: pipenv --version
-
-      - name: Install dependencies with Pipenv (Verbose)
-        run: pipenv install --dev --verbose
 
       - name: Run tests with pytest
         run: pipenv run pytest tests/test_api.py
