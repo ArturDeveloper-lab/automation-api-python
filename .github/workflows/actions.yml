@@ -6,38 +6,24 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
-
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.12.1
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3.12.1-full python3-pip
-          echo "export PATH=/home/seluser/.local/bin:$PATH" >> $GITHUB_ENV
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11' # Use Python 3.11 to include the exceptiongroup module
 
       - name: Install pipenv and dependencies
         run: |
-          python3.12.1 -m pip install --upgrade pip
-          python3.12.1 -m pip install --user pipenv
-          pipenv install --python 'which python3.12.1'
-
-      - name: Update pytest and dependencies
-        run: |
-          pipenv update pytest
-
-      - name: Install exceptiongroup
-        run: |
-          pipenv install exceptiongroup
-
-
+          python -m pip install --upgrade pip
+          python -m pip install pipenv
+          pipenv install --dev # Ensure your Pipfile specifies the required packages
 
       - name: Run tests with pytest
         run: |
-              pipenv run pytest test/
-
+          pipenv run pytest test/
