@@ -19,6 +19,15 @@ jobs:
         with:
           python-version: '3.12.1'
 
+      - name: Install pipenv
+        run: python -m pip install --upgrade pip pipenv
+
+      - name: Verify pipenv installation
+        run: pipenv --version
+
+      - name: Use pipenv
+        run: pipenv --where
+
       - name: Check Python version
         run: python --version
 
@@ -34,11 +43,9 @@ jobs:
       - name: Pipenv --py
         run: pipenv --py
 
-      - name: Pipenv --venv
-        run: pipenv --venv
 
-      - name: Install pipenv
-        run: python -m pip install --upgrade pip pipenv
+
+
 
       - name: Check Pipenv version
         run: pipenv --version
