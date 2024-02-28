@@ -19,6 +19,9 @@ jobs:
         with:
           python-version: '3.12.1'
 
+      - name: Run pipenv --where using full path
+        run: /path/to/pipenv --where
+
       - name: Install pipenv
         run: python -m pip install --upgrade pip pipenv
 
