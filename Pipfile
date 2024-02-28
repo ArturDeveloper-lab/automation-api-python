@@ -9,6 +9,7 @@ pytest = "*"
 selenium = "*"
 webdriver-manager = "*"
 faker = "*"
+exceptiongroup = "*"
 
 [dev-packages]
 
