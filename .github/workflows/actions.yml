@@ -2,12 +2,13 @@
 name: python automation api test
 
 on:
+  push:
+    branches: [main]
   schedule:
     # Runs at 12 AM UTC every day
     - cron: '0 0 * * *'
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -23,5 +24,4 @@ jobs:
           pipenv install --dev
       - name: Run tests with pytest
         run: |
-          run: |
-                pipenv run pytest tests/
+          pipenv run pytest tests/test_api.py
