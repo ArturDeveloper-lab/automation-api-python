@@ -28,8 +28,7 @@ jobs:
       - name: Verify pipenv installation
         run: pipenv --version
 
-      - name: Use pipenv
-        run: pipenv --where
+
 
       - name: Check Python version
         run: python --version
@@ -39,9 +38,6 @@ jobs:
 
       - name: Python Version
         run: python --version
-
-      - name: Pipenv --where
-        run: pipenv --where
 
       - name: Pipenv --py
         run: pipenv --py
