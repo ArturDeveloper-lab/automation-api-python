@@ -27,6 +27,14 @@ jobs:
           python3.10 -m pip install --user pipenv
           pipenv install --python `which python3.10`
 
+      - name: Update pytest and dependencies
+        run: |
+          pipenv update pytest
+
+      - name: Install exceptiongroup
+        run: |
+          pipenv install exceptiongroup
+
 
 
       - name: Run tests with pytest
