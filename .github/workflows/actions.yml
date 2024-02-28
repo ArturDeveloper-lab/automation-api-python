@@ -29,4 +29,5 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pipenv run pytest tests/test_api.py
+              pipenv run pytest ./fakerestapi/fakerestapi/api_approch_1/test
+
