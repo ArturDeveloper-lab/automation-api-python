@@ -1,10 +1,9 @@
-name: python automation api test
+name: Python Automation API Test
 
 on:
   push:
     branches: [main]
   schedule:
-    # Runs at 12 AM UTC every day
     - cron: '0 0 * * *'
 
 jobs:
@@ -20,13 +19,15 @@ jobs:
           python-version: '3.12.1'
 
       - name: Install pipenv
-        run: python -m pip install --upgrade pip && pip install --user pipenv
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv
+          pipenv --version
 
-      - name: Verify pipenv installation
-        run: python -m pipenv --version
-
-      - name: Install dependencies with Pipenv (Verbose)
-        run: python -m pipenv install --dev --verbose
+      - name: Install dependencies with pipenv
+        run: |
+          pipenv install --dev
 
       - name: Run tests with pytest
-        run: python -m pipenv run pytest tests/test_api.py
+        run: |
+          pipenv run pytest tests/test_api.py
