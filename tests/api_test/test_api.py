@@ -1,8 +1,4 @@
-import time
-
-import requests
-
-from api_approch_1.api_utils.api import FakeRESTApif, Activiti
+from api_approch1.api_utils.api import FakeRESTApif, Activiti
 
 fake_rest_api = FakeRESTApif()
 
