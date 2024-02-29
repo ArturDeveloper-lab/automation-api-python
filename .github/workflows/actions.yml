@@ -13,7 +13,7 @@ jobs:
       - name: Set up Python 3.12.1
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12.1'
+          python-version: '3.12'
       - name: Install pipenv and dependencies
         run: |
 #          sudo apt-get install -y python3.12-full
