@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.12.x
+      - name: Set up Python 3.12
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12.x' # Change 'x' to the latest minor version available
+          python-version: '3.12' # Change 'x' to the latest minor version available
 
       - name: Install pipenv and dependencies
         run: |
@@ -24,4 +24,3 @@ jobs:
       - name: Run tests with pytest
         run: |
           pipenv run pytest ./tests/api_test/
-#          pipenv run pytest test/
