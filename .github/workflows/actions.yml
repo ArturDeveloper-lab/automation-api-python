@@ -23,5 +23,5 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest
+          pipenv pytest
 #          pipenv run pytest test/
