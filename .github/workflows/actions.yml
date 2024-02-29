@@ -10,22 +10,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.12.1
+      - name: Set up Python 3.12.x
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'
+          python-version: '3.12.x' # Change 'x' to the latest minor version available
+
       - name: Install pipenv and dependencies
         run: |
-#          sudo apt-get install -y python3.12-full
-#          export PATH=/home/seluser/.local/bin:$PATH
-#          sudo apt-get install -y python3-pip
-#          sudo chown -R seluser:seluser /home/seluser/.local/
-#          python3.12 -m pip install --upgrade pip
-#          python3.12 -m pip install --user pipenv
-#          pipenv install --python `which python3.12`
           python -m pip install --upgrade pip
           python -m pip install pipenv
-          pipenv install --python $(which python)
+          pipenv install --deploy --python $(which python)
 
       - name: Run tests with pytest
         run: |
