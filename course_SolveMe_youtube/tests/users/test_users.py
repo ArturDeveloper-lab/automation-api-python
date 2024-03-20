@@ -19,6 +19,8 @@ def test_get_data_with_pydantic_validator():
     response.assert_status_code(200).validate_for_pydentic_validator(Post)
 
 
-def test_getting_user_list(get_users):
+def test_getting_user_list(get_users,calculate):
     Response(get_users).assert_status_code(200).validate_for_pydentic_validator(User)
+    print(calculate)
+    print(f" aaafff {calculate(1,1)}")
 
