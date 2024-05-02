@@ -28,7 +28,9 @@ class Response:
     def validate_for_pydentic_validator(self, schema):
         if isinstance(self.response_json_new, list):
             for item in self.response_json_new:
-                schema.model_validate(item)
+                # schema.model_validate(item)
+                parsed_object = schema.parse_obj(item)
+                self.parsed_object = parsed_object
         else:
             schema.model_validate(self.response_json_new)
         return self
@@ -47,9 +49,11 @@ class Response:
             assert self.response_status == status_code, self
         return self
 
+    def get_parsed_object(self):
+        return self.parsed_object
+
     def __str__(self):
         return \
             f"\nStatus code: {self.response_status} \n" \
             f"Requested url : {self.response.url} \n" \
             f"Response body : {self.response_json} \n"
-

@@ -6,9 +6,9 @@ class Genders(Enum):
     male = "male"
 
 
-class Statuses(Enum):
-    inactive = "inactive"
-    active = "active"
+# class Statuses(Enum):
+#     inactive = "inactive"
+#     active = "active"
 
 
 class UserError(Enum):

@@ -1,6 +1,7 @@
 from pydantic import BaseModel, validator, field_validator
 
-from course_SolveMe_youtube.infra.user_enum import Genders, Statuses, UserError
+from course_SolveMe_youtube.infra.global_enums import Statuses
+from course_SolveMe_youtube.infra.user_enum import Genders,UserError
 
 
 class User(BaseModel):
