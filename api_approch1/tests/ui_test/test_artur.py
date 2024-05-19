@@ -16,4 +16,5 @@ def test_bb():
     chrome_options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     driver.get("https://www.google.com/")
+    print("aaa")
 
